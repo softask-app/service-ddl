@@ -24,3 +24,10 @@ VALUES
   ('Trash'),
   ('Vacuum')
 ;
+
+CREATE TABLE IF NOT EXISTS common.tag
+(
+  tag_id BIGSERIAL PRIMARY KEY,
+  name   VARCHAR(32) NOT NULL UNIQUE,
+  parent BIGINT REFERENCES common.tag (tag_id) ON DELETE CASCADE
+)

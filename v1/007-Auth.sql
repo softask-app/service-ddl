@@ -33,3 +33,5 @@ CREATE TABLE IF NOT EXISTS pw_resets
   -- Timestamp the request was created.
   created TIMESTAMPTZ NOT NULL DEFAULT now()
 );
+
+RESET SEARCH_PATH;
