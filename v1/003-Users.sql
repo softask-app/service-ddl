@@ -29,8 +29,8 @@ CREATE TABLE IF NOT EXISTS users.user
 |                                                          |
 | When set to "trust", a device will be issued a 64 digit  |
 | token value.  That value in combination with the user    |
-| email and the device ID will be used to validate that    |
-| the auto-auth request is allowed                         |
+| ID and the device ID will be used to validate that the   |
+| auto-auth request is allowed                             |
 \*--------------------------------------------------------*/
 CREATE TABLE IF NOT EXISTS users.device
 (
@@ -38,8 +38,8 @@ CREATE TABLE IF NOT EXISTS users.device
   user_id   BIGINT      NOT NULL
     REFERENCES users.user (user_id) ON DELETE CASCADE,
 
-  -- Hardware ID of the device itself
-  device_id VARCHAR(64) NOT NULL UNIQUE,
+  -- Unique ID for an instance of the mobile app.
+  device_id CHAR(32) NOT NULL UNIQUE,
 
   -- Auto auth token.  Generated and sent to the device to
   -- enable that device to skip password authentication.

@@ -61,7 +61,8 @@ CREATE TABLE IF NOT EXISTS tasks.step
     CONSTRAINT step_desc_min_len CHECK (length(description) >= 3),
 
   -- Ordering indicator for this step in the task.
-  position    INT2          NOT NULL,
+  position    SMALLINT      NOT NULL
+    CONSTRAINT step_pos_min CHECK (position > 0),
 
   -- ID of the user that created this step.
   creator_id  BIGINT        NOT NULL
